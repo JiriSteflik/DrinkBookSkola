@@ -1,1 +1,0 @@
-mongodb://cookbook:unicorn@cluster0-shard-00-00.zxtub.mongodb.net:27017,cluster0-shard-00-01.zxtub.mongodb.net:27017,cluster0-shard-00-02.zxtub.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-wcfx8r-shard-0&authSource=admin&retryWrites=true&w=majority
