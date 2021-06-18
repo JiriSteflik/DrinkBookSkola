@@ -7,6 +7,7 @@ const material = new mongoose.Schema({
         max:255*/
     }
 
+
 });
 
 module.exports = mongoose.model("material", material);

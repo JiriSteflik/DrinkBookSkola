@@ -19,3 +19,34 @@ getMaterials.get("/get-materials",(req,res) => {
 })
 
 module.exports = getMaterials;
+
+/*const recieveMaterials = require("express").Router();
+const material = require("../../models/material");
+
+recieveMaterials.get("/get-Materials", async (req,res) => {
+   material.find({}, (err,docs) => {
+         if(err){
+           return  res.json({
+                 msg:"Server není připojený k databázi"
+             })
+         }
+        if(docs){
+          return  res.json(
+                {
+                data:docs,
+            msg:"Data byla získána"
+        })
+        }else{
+          return  res.json({
+                data:[],
+                msg:"Bohužel, nešlo načíst seznam potravin"
+            })
+        }
+    }).catch(() => {
+        console.log("Server není připojený k databázi")
+    })
+
+
+})
+
+module.exports = recieveMaterials;*/
