@@ -2,9 +2,9 @@ const saveRecipe = require("express").Router();
 const recipe = require("../../models/receipt");
 
 saveRecipe.post("/save-recipe", async (req,res) => {
-    const {nazevReceptu, popis, dobaPripravy, nahledovyObrazek, suroviny, soucetGramaze, fullText} = req.body;
+    const {nazevReceptu, popis, dobaPripravy, nahledovyObrazek, suroviny,  fullText} = req.body;
     const ulozeniReceptu = new recipe({
-        nazevReceptu, popis, dobaPripravy, nahledovyObrazek, suroviny, soucetGramaze, fullText
+        nazevReceptu, popis, dobaPripravy, nahledovyObrazek, suroviny,  fullText
     });
 
     try {

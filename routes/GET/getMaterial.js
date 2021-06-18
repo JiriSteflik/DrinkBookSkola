@@ -1,4 +1,4 @@
-const getMaterials = require("express").Router();
+/*const getMaterials = require("express").Router();
 const material = require("../../models/material")
 getMaterials.get("/get-materials",(req,res) => {
     material.find({}, (err, docs) => {
@@ -19,11 +19,11 @@ getMaterials.get("/get-materials",(req,res) => {
 })
 
 module.exports = getMaterials;
-
-/*const recieveMaterials = require("express").Router();
+*/
+const getMaterials = require("express").Router();
 const material = require("../../models/material");
 
-recieveMaterials.get("/get-Materials", async (req,res) => {
+getMaterials.get("/get-materials", async (req,res) => {
    material.find({}, (err,docs) => {
          if(err){
            return  res.json({
@@ -49,4 +49,4 @@ recieveMaterials.get("/get-Materials", async (req,res) => {
 
 })
 
-module.exports = recieveMaterials;*/
+module.exports = getMaterials;

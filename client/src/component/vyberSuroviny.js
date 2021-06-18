@@ -12,7 +12,7 @@ useEffect(() => {
         const vybraneSuroviny = vybranesuroviny.map((surovina) => {
             return surovina.name;
         })
-        return vybraneSuroviny.indexOf( el.materialName ) < 0;
+        return vybraneSuroviny.indexOf( el.name ) < 0;
       } );
     setSeznamSurovin(filtered);
     return () => {
@@ -25,14 +25,14 @@ const hledejSuroviny = (e) => {
     setInputState(value)
     const regExp = new RegExp(value,"gi");
     const search = suroviny.filter((item) => {
-        return item.materialName.match(regExp);
+        return item.name.match(regExp);
     })
    setSeznamSurovin(search);
 }
 
 const vymazZvoleneSurovinyZNabidky = (item) => {
     const cistaData = seznamSurovin.filter((polozka) => {
-        return item.name !== polozka.materialName
+        return item.name !== polozka.name
     })
     setSeznamSurovin(cistaData);
 }
@@ -42,29 +42,29 @@ const zavriDialogPridaniSuroviny = () => {
 }
 
 return (
-        <div className="vyberSurovin">
-            <div className="plocha">
-                <div className="zavrit" onClick={
+        <div classname="vyberSurovin">
+            <div classname="plocha">
+                <div classname="zavrit" onClick={
                     () => {
                       zapnutiVypnutiPaneluSVyberemSuroviny(false)  
                     }
-                }></div>
-                <div className="vyhledavaciPole"><input value={inputState} onInput={hledejSuroviny} type="text" placeholder={`Vyhledat suroviny (${seznamSurovin.length})`} /></div>
-                <div className="suroviny">{seznamSurovin.map((surovina,index) => {
+                }> </div>
+                <div classname="vyhledavaciPole"><input value={inputState} onInput={hledejSuroviny} type="text" placeholder={`Vyhledat suroviny (${seznamSurovin.length})`} /></div>
+                <div classname="suroviny">{seznamSurovin.map((surovina,index) => {
                     return(
                         <div onClick={() => {
                             const object = {
-                                name:seznamSurovin[index].materialName,
+                                name:seznamSurovin[index].name,
                                 mnozstvi:0
                             }
                             vyberSurovinu(object);
                             vymazZvoleneSurovinyZNabidky(object)
                         
-                        }} className="surovina" key={index}>{surovina.materialName}</div>
+                        }} classname="surovina" key={index}>{surovina.name}</div>
                     )
                 })}
                 </div>
-                <div className="btn" onClick={()=>setOtevritPridaniSuroviny(!otevritPridaniSuroviny)}> Požadovaná surovina v seznamu chybí?</div>
+                <div classname="buttnDva" onClick={()=>setOtevritPridaniSuroviny(!otevritPridaniSuroviny)}><p>Tady neco bude</p> Požadovaná surovina v seznamu chybí?</div>
                 {otevritPridaniSuroviny?<PridejSurovinu zavri={zavriDialogPridaniSuroviny}/>:<></>}
             </div>
         </div>

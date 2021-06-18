@@ -8,7 +8,7 @@ const PridejSurovinu = ({zavri}) => {
     const {zapnutiVypnutiPaneluSVyberemSuroviny,vyberSurovinu} = useContext(GlobalContext);
     const ulozSurovinuNaServerADoAppky = () => {
         setShowButton(false);
-        setMsgZeServeru("Ukládám... chvilku strpení");
+        setMsgZeServeru("Ukládání");
         fetch("http://localhost:7000/save-material",{
             method: 'post',
             headers: {
@@ -21,7 +21,7 @@ const PridejSurovinu = ({zavri}) => {
         }).then(({msg}) => {
             setMsgZeServeru(msg);
             setShowButton(true);
-          if(msg === "Surovina byla úspěšně uložena v našem seznamu!"){
+          if(msg === "Ingredience se uložila!"){
               //Zde dojde k uložení a celkovému propsání do seznamu všech surovin
              vyberSurovinu({
                 name:surovina,
@@ -31,17 +31,17 @@ const PridejSurovinu = ({zavri}) => {
           }
         }).catch((err) => {
             if(err){
-                setMsgZeServeru("Nedošlo k uložení!")
+                setMsgZeServeru("Ingredience nebyla uložena!")
                 setShowButton(true)
             }
         })
     }
     return (
         <div className="pridaniSuroviny">
-             <div className="zavrit" onClick={zavri}></div>
+             <div className="zavrit" onClick={zavri}><p>zavrit</p></div>
             <h3>Přidání suroviny</h3>
-            <input type="text" onInput={(e)=>setSurovina(e.target.value)} value={surovina} placeholder="Zadejte surovinu"/>
-           {showButton?<div onClick={ulozSurovinuNaServerADoAppky} className="button2"> Ulož novou surovinu</div>:<></>} 
+            <input type="text" onInput={(e)=>setSurovina(e.target.value)} value={surovina} placeholder="Zadej ingredienci"/>
+           {showButton?<div onClick={ulozSurovinuNaServerADoAppky} className="btn btn-pridej-surovinu"> Ulož novou surovinu</div>:<></>} 
             <p>{msgZeServeru}</p>
         </div>
     )

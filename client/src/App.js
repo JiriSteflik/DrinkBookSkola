@@ -3,6 +3,8 @@ import './App.css';
 import Main from './pages/Main';
 import SeznamDrinku from './pages/seznamDrinku';
 import AddRecipe from './pages/addRecipe';
+import SERP from "./pages/Serp";
+import DeatilReceptu from "./component/DetailReceptu";
 
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Menu from './component/Menu';
@@ -20,6 +22,8 @@ const App = () => {
           <Route exact path="/seznam-drinku" component={SeznamDrinku} />
           <Route exact path="/pridej-surovinu" component={PridejSurovinu} />
           <Route exact path="/add-recipe" component={AddRecipe} />
+          <Route exact path="/search-engine-result-page"  component={SERP}/>
+          <Route exact path="/detail-receptu"  component={DeatilReceptu}/>
           
         </Switch>
       

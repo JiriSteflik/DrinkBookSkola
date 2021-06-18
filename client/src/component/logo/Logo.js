@@ -5,9 +5,9 @@ import './Logo.css';
 
 const Logo = () => {
   return (
-    <div className='ma4 mt0 ph3 pa4'>
+    <div className='ma4 mt0 ph3 pa4 '>
         
-      <Tilt className="Tilt br2 shadow-2" options={{ max : 55 }} style={{ height: 250, width: 250 }} >
+      <Tilt className="Tilt br2 shadow-2 center" options={{ max : 55 }} style={{ height: 270, width: 270 }} >
         <div className="Tilt-inner pa3">
           <h1 className='tc'>Drunker App</h1>
           <img className='image'  alt='logo' src={wine}/>

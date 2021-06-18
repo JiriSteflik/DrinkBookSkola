@@ -18,13 +18,13 @@ export const GlobalProvider = ({ children }) => {
    * 
    * 3. Funkce která manipuluje s příslušným statem z bodu 1 
    */
- const zmenSurovinu = (surovina) => {
+ /*const zmenSurovinu = (surovina) => {
    dispatch({
      type:"ZMENA_SUROVINY",
      payload:surovina
    })
    
- }
+ }*/
  const zapnutiVypnutiPaneluSVyberemSuroviny = (bool) => {
   dispatch({
     type:"ZAPNI_VYPNI_PANEL_SUROVIN",
@@ -65,7 +65,7 @@ const setZvolenyRecept = (number) => {
      */
       value={{
         surovina:state.surovina,
-        zmenSurovinu,
+        //zmenSurovinu,
       //Seznam vybraných surovin do receptu
         //Seznam vybraných surovin do receptu
         vybraneSuroviny:state.vybraneSuroviny,
