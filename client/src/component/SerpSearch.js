@@ -70,7 +70,7 @@ const SerpSearch = () => {
                     setZvolenyRecept(index);
                     route.push("/detail-receptu");
                 }}>
-                    <div className="tc mw6 grow bg-light-green br3 dt center pa4 ma4 bw2 shadow-5">
+                    <div className="tc mw6 grow bg-washed-yellow br3 dt center pa4 ma4 bw2 shadow-5">
                         <strong className="ttu">{recept.nazevReceptu}</strong> <br/>
                         <br></br>
                         <img width="200" src={recept.nahledovyObrazek} alt={recept.nazevReceptu}/>

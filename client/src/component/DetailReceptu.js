@@ -7,7 +7,7 @@ const DetailReceptu = () => {
     
     return (
        
-        <div className="tc grow bg-washed-yellow br2 pa2 ma2 dt center bw2 shadow-5">
+        <div className="tc mw6 grow bg-washed-yellow br2 pa2 ma2 dt center bw2 shadow-5">
              {vyhledaneRecepty.data?<>
             <h1>{vyhledaneRecepty.data?vyhledaneRecepty.data[zvolenyRecept].nazevReceptu:<></>}</h1>
             <div>

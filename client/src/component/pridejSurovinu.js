@@ -39,9 +39,9 @@ const PridejSurovinu = ({zavri}) => {
     return (
         <div className="pridaniSuroviny">
              <div className="zavrit" onClick={zavri}><p>zavrit</p></div>
-            <h3>Přidání suroviny</h3>
+            <h3>Přidání ingredience</h3>
             <input type="text" onInput={(e)=>setSurovina(e.target.value)} value={surovina} placeholder="Zadej ingredienci"/>
-           {showButton?<div onClick={ulozSurovinuNaServerADoAppky} className="btn btn-pridej-surovinu"> Ulož novou surovinu</div>:<></>} 
+           {showButton?<div onClick={ulozSurovinuNaServerADoAppky} className="btn btn-pridej-surovinu"> Ulož novou ingredienci</div>:<></>} 
             <p>{msgZeServeru}</p>
         </div>
     )

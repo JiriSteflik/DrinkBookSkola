@@ -17,9 +17,7 @@ const AddRecipe = () => {
   const [suroviny, setSuroviny] = useState([]); 
   const [msgZeServeru, setMsgZeServeru] = useState("");
   
-    /**
-     * @description Získá seznam jednotlivých surovin z databáze
-     */
+    
      const getVsechnySuroviny = async () => {
         zapnutiVypnutiPaneluSVyberemSuroviny(true);
      fetch("http://localhost:7000/get-materials").then((data) => {
@@ -30,42 +28,30 @@ const AddRecipe = () => {
      })
     }
 
-    /**
-   *
-   * @param array Pole objektů
-   * @description Přepočítá sumu všech aktivně přidaných surovin
-   */
+  
      const prepocitejGramaz = (array) => {
       let sum = 0;
        array.forEach((item) => sum += +item.mnozstvi);
       
   }
 
-  /**
- *
- * @param e event object
- * @description Umístí do globálního contextu nové množství určité suroviny
- */
+ 
    const menicMnozstvi = (e) => {
-    //Aby nešlo jít na menší jak 1
+    
     if(e.target.value && e.target.value > 0){
     const index = e.target.getAttribute("index");
     vybraneSuroviny[index].mnozstvi = parseInt(e.target.value);
     setVybraneSuroviny(vybraneSuroviny);
     prepocitejGramaz(vybraneSuroviny);
   }else{
-      //Pokud je hodnota množství suroviny menší nebo rovno nule
+      
       const index = e.target.getAttribute("index");
     vybraneSuroviny[index].mnozstvi = parseInt(0);
     setVybraneSuroviny(vybraneSuroviny);
     prepocitejGramaz(vybraneSuroviny);
   }
 }
-  /**
-   * @param e event objekt
-   * @description smaze z globálního contextu (statu) zvolenou surovinu a přepočítá
-   * @todo přepočítá to se zpožděním jednoho itemu, nevím proč, kurva!
-   */
+  
    const smazZvolenouSurovinu = (e) => {
     const index = e.target.getAttribute("index");
     const ocisteneVybraneSuroviny = vybraneSuroviny.filter((item) =>item.name !== vybraneSuroviny[index].name);
@@ -90,13 +76,13 @@ const ulozitReceptDoDatabaze = () => {
     })()
   }
   if(schemaObjektu.nazevReceptu.length <= 0 ){
-    setMsgZeServeru({msg:"Název receptu není vyplněn - je to povinný údaj"})
+    setMsgZeServeru({msg:"Vypln nazev receptu"})
 }else if(schemaObjektu.popis.length<=0){
-    setMsgZeServeru({msg:"Popis receptu nebyl vyplňěn - je to povinný údaj"})
+    setMsgZeServeru({msg:"Vypln popis receptu"})
 }else if(schemaObjektu.dobaPripravy.length <=0){
-    setMsgZeServeru({msg:"Doba přípravy není vyplněna - je to povinný údaj"})
+    setMsgZeServeru({msg:"Vypln dobu pripravy"})
 }else if(schemaObjektu.nahledovyObrazek.length <=0){
-    setMsgZeServeru({msg:"Náhledový obrázek nebyl přidán, využijte prosím externí URL adresy - je to povinný údaj"})
+    setMsgZeServeru({msg:"Vloz url k obrazku"})
 
 }else{
 fetch("http://localhost:7000/save-recipe",{
@@ -110,12 +96,12 @@ fetch("http://localhost:7000/save-recipe",{
     return msg.json();
 }).then((msg) => {
     setMsgZeServeru(msg);
-    if(msg.msg === "Recept byl úspěšně uložen"){
+    if(msg.msg === "Drink byl uložen"){
        window.location.reload();
     }
 }).catch((err) => {
     if(err){
-        setMsgZeServeru("Nelze se připojit k server, opakujte akci později...")
+        setMsgZeServeru("Nelze se připojit")
     }
 })
 }
