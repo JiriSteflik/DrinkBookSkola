@@ -108,72 +108,10 @@ text-align: center;
 }
 
 
-.top-menu ul{
-  display:flex;
-  justify-content: flex-end;
-}
-.top-menu ul li, .top-menu ul li a{
-  list-style-type: none;
-  margin:5px 5px;
-  font-size:13px;
-  text-decoration: none;
-  color:#212020;
-}
-.layout{
-  display: flex;
-  width: 100%;
-  height: 90vh;
-  overflow: scroll;
-  justify-content: center;
-  align-items: center;
-}
-.search-area, .serp-area{
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width:600px;
-  max-width: 100%;
-  padding:10px;
-}
-.serp-area{
-  flex-direction: row !important;
-}
-.search-area input[type="text"], .serp-area input[type="text"]{
-  background-color: transparent;
-    border: none;
-    color: rgba(0,0,0,.87);
-    word-wrap: break-word;
-    max-width: 100%;
-    text-align: center;
-    padding: 15px 0px;
-    border: 1px solid gainsboro;
-    border-radius: 28px;
-  width:100%;
-  margin:0px 10px; 
-}
-.search-area .vyhledat, .btn{
-  margin-top: 20px;
-  background: #01ade4;
-  padding: 10px 20px;
-  display: inline-block;
-  color: white;
-  border-radius: 4px;
-  font-weight: bold;
-  border:none;
-  cursor:pointer;
-}
-.serp-area input[type="submit"]{
-  border: none;
-  background: #0092ff;
-  color: white;
-  padding: 13px;
-  border-radius: 9px;
-}
-.serp-main{
-  border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 20px;
-}
+
+
+
+
 .btn-add-item{
   display: block;
   padding: 15px 25px;
@@ -183,17 +121,17 @@ text-align: center;
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #530c7c;
+  background-color: #661eec;
   border: none;
   border-radius: 15px;
-  box-shadow: 0 9px #999;
+  
 }
 
-.btn-add-item:hover {background-color: #9217b1a1}
+.btn-add-item:hover {background-color: #a923caa1}
 
 .btn-add-item:active {
-  background-color: #3e538e;
-  box-shadow: 0 5px #666;
+  background-color: #274db4;
+  box-shadow: 0 5px rgb(214, 65, 65);
   transform: translateY(4px);
 }
 
@@ -206,17 +144,17 @@ text-align: center;
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: #530c7c;
+    background-color: #661eec;
     border: none;
     border-radius: 15px;
-    box-shadow: 0 9px #999;
+    
   }
   
-  .btn-save-item:hover {background-color: #9217b1a1}
+  .btn-save-item:hover {background-color: #a923caa1}
   
   .btn-save-item:active {
     background-color: #3e538e;
-    box-shadow: 0 5px #666;
+    box-shadow: 0 5px rgb(230, 76, 76);
     transform: translateY(4px);
 }
 .btn-prefil-item{
@@ -235,27 +173,10 @@ text-align: center;
     margin: 0 auto;
     display: block;
 }
-.btn{
-  cursor:pointer;
-}
-.column{
-  max-width:100%;
-}
-div.add-recipe{
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #efebeb;
-  padding: 10px;
-  border-radius: 6px;
-  box-shadow: 1px 13px 1pc -13px;
-}
-h1{
-  font-size: 20px;
-  text-align: center;
-  margin: 14px;
-  color: #656565;
-  text-transform: uppercase;
-}
+
+
+
+
 .recipe-canvas h1{
   margin-bottom: 10vh;
 }
@@ -293,7 +214,7 @@ h1{
   display: flex;
   flex-direction: column;
   padding: 2px;
-  background: #ffffff;
+  background: #f0caca;
   margin: 4px;
   border-radius: 4px;
   box-shadow: 2px 19px 2pc -13px;
@@ -334,7 +255,7 @@ h1{
   padding: 3px;
   text-transform: uppercase;
   color: #020001;
-  font-style:inherit;
+  font-style:italic;
 }
 
 

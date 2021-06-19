@@ -37,12 +37,14 @@ const PridejSurovinu = ({zavri}) => {
         })
     }
     return (
-        <div className="pridaniSuroviny">
-             <div className="zavrit" onClick={zavri}><p>zavrit</p></div>
+        <div className="">
+             <div className="" onClick={zavri}><p>zavrit</p></div>
             <h3>Přidání ingredience</h3>
             <input type="text" onInput={(e)=>setSurovina(e.target.value)} value={surovina} placeholder="Zadej ingredienci"/>
            {showButton?<div onClick={ulozSurovinuNaServerADoAppky} className="btn btn-pridej-surovinu"> Ulož novou ingredienci</div>:<></>} 
-            <p>{msgZeServeru}</p>
+           <div>
+                    <p className ='tc f6 link mid-gray dim'>{msgZeServeru}</p>
+                </div>
         </div>
     )
 }

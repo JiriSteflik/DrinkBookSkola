@@ -12,7 +12,7 @@ saveRecipe.post("/save-recipe", async (req,res) => {
 
       if (data) {
         return res.json({
-          msg: "Recept s tímto jménem již evidujeme v naší databázi. Prosím, změnte název receptu"
+          msg: "Drink s tímto jménem už existuje, zadejte odlišný název"
         });
       }
 
@@ -20,20 +20,20 @@ saveRecipe.post("/save-recipe", async (req,res) => {
 
       if (_id) {
         return res.json({
-          msg:"Recept byl úspěšně uložen"
+          msg:"Drink byl uložen"
         });
       }
 
       return res.json({
-        msg:"Recept byl úspěšně uložen"
+        msg:"Drink byl uložen"
       });
     } catch (error) {
-      res.json({msg: 'Bohužel došlo k neznáme chybě - server se nepřipojil asi k DB'});
+      res.json({msg: 'neznámá chyba'});
     }
     
 });
 saveRecipe.get("/save-recipe", (req,res) => {
-  res.send("Ano, navštívil jsi /save-recipe GETEM")
+  res.send("Navštívil jsi /save-recipe GETEM")
 })
 
 module.exports = saveRecipe;

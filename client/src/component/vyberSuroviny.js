@@ -64,7 +64,7 @@ return (
                     )
                 })}
                 </div>
-                <div classname="buttnDva" onClick={()=>setOtevritPridaniSuroviny(!otevritPridaniSuroviny)}><p>Tady neco bude</p> Požadovaná surovina v seznamu chybí?</div>
+                <div classname="buttnDva" onClick={()=>setOtevritPridaniSuroviny(!otevritPridaniSuroviny)}> Nenalezl jsi ingredienci?</div>
                 {otevritPridaniSuroviny?<PridejSurovinu zavri={zavriDialogPridaniSuroviny}/>:<></>}
             </div>
         </div>

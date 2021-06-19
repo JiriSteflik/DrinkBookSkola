@@ -108,10 +108,11 @@ fetch("http://localhost:7000/save-recipe",{
   }
  
   return (
+    <div>
       
       <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-40-l mw6 shadow-3 center">
        
-       {zapniPanelSVyberemSurovin?<VyberSurovin vybranesuroviny={vybraneSuroviny} suroviny={suroviny}/>:<></>}
+       
          
        
            
@@ -120,20 +121,20 @@ fetch("http://localhost:7000/save-recipe",{
             <fieldset className="ba b--transparent ph0 mh0">
               <legend className="f1 fw6 ph0 mh0">Vyplň drink</legend>
               <div className="mt3">
-                <label className="db fw6 lh-copy f6" htmlFor="nazev-receptu">Název</label>
+                <label className="db fw6 lh-copy f6 ct" htmlFor="nazev-receptu">Název</label>
                 <input
                   className="b pa2 input-reset ba bg-transparent  hover-black w-100"
                   type="text"
-                  onInput={(e) => setNazevReceptu(e.target.value)} value={nazevReceptu}
+                  onInput={(e) => setNazevReceptu(e.target.value)} placeholder="Zvol nazev drinku" value={nazevReceptu}
                   
                 />
               </div>
                 <div className="mv3">
-                  <label className="db fw6 lh-copy f6" htmlFor="popis">Popis receptu</label>
+                  <label className="db fw6 lh-copy f6" htmlFor="popis">Popis drinku</label>
                   <input
                     className="b pa2 input-reset ba bg-transparent  hover-black w-100"
                     type="text"
-                    onInput={(e) => setPopis(e.target.value)} value={popis}
+                    onInput={(e) => setPopis(e.target.value)} placeholder="Popiš přípravu receptu" value={popis}
                     />
                     
                 </div>
@@ -142,7 +143,7 @@ fetch("http://localhost:7000/save-recipe",{
                 <input
                   className="b pa2 input-reset ba bg-transparent  hover-black w-100"
                   type="text"
-                  onInput={(e) => setDobaPripravy(e.target.value)} value={dobaPripravy}
+                  onInput={(e) => setDobaPripravy(e.target.value)} placeholder="Zapis dobu pripravy v minutach" value={dobaPripravy}
                   />
                   
               </div>
@@ -169,16 +170,17 @@ fetch("http://localhost:7000/save-recipe",{
                               )
                               })}
                           </div>
-                           <div onClick={() => {
-                               getVsechnySuroviny()
-                               }} className="btn btn-add-item">Přidat surovinu</div>
+                           
                         </div>
+                        <div onClick={() => {
+                               getVsechnySuroviny()
+                               }} className="btn btn-add-item">Přidat ingredienci</div>
               </div>
 
                     
               
             </fieldset>
-            <div className="btn btn-save-item" onClick={ulozitReceptDoDatabaze}> Uložit receipt</div>
+            <div className="btn btn-save-item" onClick={ulozitReceptDoDatabaze}> Uložit drink</div>
                     <p className="serverMsg">{msgZeServeru.msg}</p>
                     
             
@@ -186,6 +188,11 @@ fetch("http://localhost:7000/save-recipe",{
         </main>
        
       </article>
+      <div className="tc">
+    {zapniPanelSVyberemSurovin?<VyberSurovin vybranesuroviny={vybraneSuroviny} suroviny={suroviny}/>:<></>}
+    </div>
+      </div>
+      
     );
 }
   
