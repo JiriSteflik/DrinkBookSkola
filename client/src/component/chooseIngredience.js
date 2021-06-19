@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react'
 import { GlobalContext } from '../context/GlobalContext';
-import PridejSurovinu from "./pridejSurovinu";
-const VyberSuroviny = ({suroviny,vybranesuroviny}) => {
+import AddIngredience from "./AddIngredience";
+const ChooseIngredience = ({suroviny,vybranesuroviny}) => {
 const [otevritPridaniSuroviny, setOtevritPridaniSuroviny] = useState(false);    
 const [seznamSurovin, setSeznamSurovin] = useState([])
 const {zapnutiVypnutiPaneluSVyberemSuroviny,vyberSurovinu} = useContext(GlobalContext);
@@ -42,15 +42,15 @@ const zavriDialogPridaniSuroviny = () => {
 }
 
 return (
-        <div classname="vyberSurovin">
-            <div classname="plocha">
-                <div classname="zavrit" onClick={
+        <div className="">
+            <div className="plocha">
+                <div className="zavrit" onClick={
                     () => {
                       zapnutiVypnutiPaneluSVyberemSuroviny(false)  
                     }
-                }> </div>
-                <div classname="vyhledavaciPole"><input value={inputState} onInput={hledejSuroviny} type="text" placeholder={`Vyhledat ingredience`} /></div>
-                <div classname="suroviny">{seznamSurovin.map((surovina,index) => {
+                }><p className="tc mw6 bg-red br4 pa2 ma3 dt center bw2 shadow-2 ">vypni</p></div>
+                <div className="vyhledavaciPole"><input value={inputState} onInput={hledejSuroviny} type="text" placeholder={`Vyhledat ingredience`} /></div>
+                <div className="suroviny">{seznamSurovin.map((surovina,index) => {
                     return(
                         <div onClick={() => {
                             const object = {
@@ -60,15 +60,15 @@ return (
                             vyberSurovinu(object);
                             vymazZvoleneSurovinyZNabidky(object)
                         
-                        }} classname="surovina" key={index}>{surovina.name}</div>
+                        }} className="surovina" key={index}>{surovina.name}</div>
                     )
                 })}
                 </div>
-                <div classname="buttnDva" onClick={()=>setOtevritPridaniSuroviny(!otevritPridaniSuroviny)}> Nenalezl jsi ingredienci?</div>
-                {otevritPridaniSuroviny?<PridejSurovinu zavri={zavriDialogPridaniSuroviny}/>:<></>}
+                <div className="buttnDva" onClick={()=>setOtevritPridaniSuroviny(!otevritPridaniSuroviny)}> Nenalezl jsi ingredienci?</div>
+                {otevritPridaniSuroviny?<AddIngredience zavri={zavriDialogPridaniSuroviny}/>:<></>}
             </div>
         </div>
     )
 }
 
-export default VyberSuroviny
+export default ChooseIngredience

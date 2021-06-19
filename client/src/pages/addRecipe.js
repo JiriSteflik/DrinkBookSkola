@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
 import { GlobalContext } from '../context/GlobalContext';
-import VyberSurovin from '../component/vyberSuroviny';
+import VyberSurovin from '../component/chooseIngredience';
 const AddRecipe = () => {
   const {
     zapniPanelSVyberemSurovin,
@@ -116,46 +116,46 @@ fetch("http://localhost:7000/save-recipe",{
          
        
            
-        <main className="pa3 black-80 add-recipe">
+        <main className="pa3 black-80 add-recipe ">
           <div className="measure">
-            <fieldset className="ba b--transparent ph0 mh0">
-              <legend className="f1 fw6 ph0 mh0">Vyplň drink</legend>
+            <fieldset className=" b--transparent ph0 mh0">
+              <legend className="f1 fw6 ph0 mh0 tc">Vyplň drink</legend>
               <div className="mt3">
-                <label className="db fw6 lh-copy f6 ct" htmlFor="nazev-receptu">Název</label>
-                <input
-                  className="b pa2 input-reset ba bg-transparent  hover-black w-100"
-                  type="text"
-                  onInput={(e) => setNazevReceptu(e.target.value)} placeholder="Zvol nazev drinku" value={nazevReceptu}
-                  
-                />
-              </div>
-                <div className="mv3">
-                  <label className="db fw6 lh-copy f6" htmlFor="popis">Popis drinku</label>
-                  <input
-                    className="b pa2 input-reset ba bg-transparent  hover-black w-100"
-                    type="text"
-                    onInput={(e) => setPopis(e.target.value)} placeholder="Popiš přípravu receptu" value={popis}
+                  <label className="db fw6 lh-copy f6 ct" htmlFor="nazev-receptu">Název</label>
+                    <input
+                          className="b pa2 input-reset ba bg-transparent  hover-black w-100"
+                          type="text"
+                          onInput={(e) => setNazevReceptu(e.target.value)} placeholder="Zvol nazev drinku" value={nazevReceptu}
                     />
-                    
-                </div>
-              <div className="mv3">
-                <label className="db fw6 lh-copy f6" htmlFor="popis">Doba pripravy</label>
-                <input
-                  className="b pa2 input-reset ba bg-transparent  hover-black w-100"
-                  type="text"
-                  onInput={(e) => setDobaPripravy(e.target.value)} placeholder="Zapis dobu pripravy v minutach" value={dobaPripravy}
-                  />
-                  
               </div>
+
               <div className="mv3">
-                <label className="db fw6 lh-copy f6" htmlFor="popis">Obrázek drinku</label>
-                <input
-                  className="b pa2 input-reset ba bg-transparent  hover-black w-100"
-                  type="text"
-                  onInput={(e) => {setNahledovyObrazek(e.target.value);}} placeholder="Umístěte externí odkaz"  name="popis" value={nahledovyObrazek}/>
-                  
-                  
+                      <label className="db fw6 lh-copy f6" htmlFor="popis">Popis drinku</label>
+                       <input
+                          className="b pa2 input-reset ba bg-transparent  hover-black w-100"
+                          type="text"
+                          onInput={(e) => setPopis(e.target.value)} placeholder="Popiš přípravu receptu" value={popis}
+                       />
               </div>
+
+              <div className="mv3">
+                      <label className="db fw6 lh-copy f6" htmlFor="popis">Doba pripravy</label>
+                       <input
+                          className="b pa2 input-reset ba bg-transparent  hover-black w-100"
+                          type="text"
+                          onInput={(e) => setDobaPripravy(e.target.value)} placeholder="Zapis dobu pripravy v minutach" value={dobaPripravy}
+                       />
+              </div>
+
+              <div className="mv3">
+                      <label className="db fw6 lh-copy f6" htmlFor="popis">Obrázek drinku</label>
+                       <input
+                          className="b pa2 input-reset ba bg-transparent  hover-black w-100"
+                          type="text"
+                          onInput={(e) => {setNahledovyObrazek(e.target.value);}} placeholder="Umístěte externí odkaz"  name="popis" value={nahledovyObrazek}
+                       />
+              </div>
+
               <div className="card">
                 
                         <div className="card">
@@ -172,11 +172,11 @@ fetch("http://localhost:7000/save-recipe",{
                           </div>
                            
                         </div>
-                        <div onClick={() => {
+                        
+              </div>
+              <div onClick={() => {
                                getVsechnySuroviny()
                                }} className="btn btn-add-item">Přidat ingredienci</div>
-              </div>
-
                     
               
             </fieldset>

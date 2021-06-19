@@ -7,29 +7,25 @@ saveMaterial.post("/save-material", async (req,res) => {
     const saveMaterial = new modelMaterial({
         name:name
     })
-    //Nejdřív najdi, zda už taková surovina neexistuje
+    //najdi surovinu
   modelMaterial.findOne({"name":name}, (err,data) => {
       if(err){
          return res.json({
-              msg:"Bohužel došlo k neznámě chybě nebo server nekomunikuje s DB"
+              msg:"Server neodpovídá"
           })
       }
-      //Pokud ano, tak už surovinu neukládejme
+      
       if(data!== null){
          return res.json({
-              msg:"Bohužel, tuhle surovinu už evidujeme!"
+              msg:"ingredience už existuje."
           })
       }else{
           //Jinak ji tady na klid uložíme
           saveMaterial.save((err,msg) => {
               if(msg._id){
              return res.json({
-                  msg:"Surovina byla úspěšně uložena v našem seznamu!"
+                  msg:"Ingredience byla uložena!"
               })
-            }else{
-            return  res.json({
-                msg:"Surovina nemohla být uložena" + err.toString()
-                })
             }
           })
       }

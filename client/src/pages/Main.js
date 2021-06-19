@@ -9,9 +9,7 @@ const Main = () => {
         <div>
             <Logo />
             <SearchDrink />
-            
-            
-        </div>
+         </div>
     )
 }
 

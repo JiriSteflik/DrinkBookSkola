@@ -2,9 +2,9 @@ import React from 'react';
 import './App.css';
 import Main from './pages/Main';
 import SeznamDrinku from './pages/seznamDrinku';
-import AddRecipe from './pages/addRecipe';
+import AddDrink from './pages/addRecipe';
 import SERP from "./pages/Serp";
-import DeatilReceptu from "./component/DetailReceptu";
+import DeatailDrink from "./component/DetailDrink";
 
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Menu from './component/Menu';
@@ -21,9 +21,9 @@ const App = () => {
           <Route exact path="/" component={Main} />
           <Route exact path="/seznam-drinku" component={SeznamDrinku} />
           <Route exact path="/pridej-surovinu" component={PridejSurovinu} />
-          <Route exact path="/add-recipe" component={AddRecipe} />
+          <Route exact path="/add-recipe" component={AddDrink} />
           <Route exact path="/search-engine-result-page"  component={SERP}/>
-          <Route exact path="/detail-receptu"  component={DeatilReceptu}/>
+          <Route exact path="/detail-receptu"  component={DeatailDrink}/>
           
         </Switch>
       

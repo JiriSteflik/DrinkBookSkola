@@ -74,7 +74,7 @@ const SerpSearch = () => {
                         <strong className="ttu">{recept.nazevReceptu}</strong> <br/>
                         <br></br>
                         <img width="200" src={recept.nahledovyObrazek} alt={recept.nazevReceptu}/>
-                        <div className="obsah ">
+                        <div className="tc mw6 bg-transparent br4 pa2 ma3 dt center bw2 shadow-2">
                         
                         <p> {recept.popis}</p>
                         </div>

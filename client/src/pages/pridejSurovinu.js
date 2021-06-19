@@ -1,13 +1,13 @@
-import React,{useState, useContext} from 'react'
-import { GlobalContext } from '../context/GlobalContext';
+import React,{useState} from 'react'
 
-const PridejSurovinu = ({zavri}) => {
+
+const AddIngredience = () => {
     const [surovina, setSurovina] = useState("");
     const [msgZeServeru, setMsgZeServeru] = useState("");
-    const [showButton, setShowButton] = useState(true);
-    const {zapnutiVypnutiPaneluSVyberemSuroviny,vyberSurovinu} = useContext(GlobalContext);
-    const ulozSurovinuNaServerADoAppky = () => {
-        setShowButton(false);
+    
+    
+    const SaveIngToDb = () => {
+        
         setMsgZeServeru("Ukládám... chvilku strpení");
         fetch("http://localhost:7000/save-material",{
             method: 'post',
@@ -20,30 +20,20 @@ const PridejSurovinu = ({zavri}) => {
             return response.json();
         }).then(({msg}) => {
             setMsgZeServeru(msg);
-            setShowButton(true);
+            
           if(msg === "Surovina byla úspěšně uložena v našem seznamu!"){
-              
-             vyberSurovinu({
-                name:surovina,
-                mnozstvi:0
-             })
-             zapnutiVypnutiPaneluSVyberemSuroviny(false);
           }
         }).catch((err) => {
             if(err){
                 setMsgZeServeru("Nedošlo k uložení!")
-                setShowButton(true)
             }
         })
     }
     return (
         <div>
             <div className="center pa4 setSirku">
-                <div className="zavrit" onClick={zavri}></div>
-                
                 <input className='f4 pa2 w-70 center' type="text" onInput={(e)=>setSurovina(e.target.value)} value={surovina} placeholder="Zadej ingredienci"/>
-                {showButton?<div onClick={ulozSurovinuNaServerADoAppky} className="button w-30 grow f4 link ph3 pv2 dib white bg-light-purple">Ulož </div>:<></>} 
-            
+                <div onClick={SaveIngToDb} className="button w-30 grow f4 link ph3 pv2 dib white bg-light-purple">Ulož </div> 
             </div>
                 <div>
                     <p className ='tc f6 link mid-gray dim'>{msgZeServeru}</p>
@@ -52,4 +42,4 @@ const PridejSurovinu = ({zavri}) => {
     )
 }
 
-export default PridejSurovinu
+export default AddIngredience

@@ -8,28 +8,28 @@ const reducer = (state, action) => {
           ...state,
           surovina:action.payload
         }
-        case "VYBER_SUROVINU":
+        case "CHOOSE_INGREDIENCE":
         return {
           ...state,
           vybraneSuroviny: [...state.vybraneSuroviny,action.payload],
         };
         
-      case "ZAPNI_VYPNI_PANEL_SUROVIN":
+      case "ON_OFF_INGREDIENCE_PANEL":
         return {
           ...state,
           zapniPanelSVyberemSurovin: action.payload,
         };
-      case "SET_VYBRANE_SUROVINY":
+      case "SET_CHOOSE_INGREDIENCE":
         return {
           ...state,
           vybraneSuroviny: action.payload,
         };
-      case "SET_VYHLEDANE_RECEPTY":
+      case "SET_FIND_DRINKS":
         return {
           ...state,
           vyhledaneRecepty: action.payload,
         };
-      case "SET_ZVOLENY_RECEPT":
+      case "SET_CHOOSE_RECIPE":
         return {
           ...state,
           zvolenyRecept: action.payload,

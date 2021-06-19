@@ -1,12 +1,12 @@
 import React,{useState, useContext} from 'react'
 import { GlobalContext } from '../context/GlobalContext';
 
-const PridejSurovinu = ({zavri}) => {
+const AddIngredience = ({zavri}) => {
     const [surovina, setSurovina] = useState("");
     const [msgZeServeru, setMsgZeServeru] = useState("");
     const [showButton, setShowButton] = useState(true);
     const {zapnutiVypnutiPaneluSVyberemSuroviny,vyberSurovinu} = useContext(GlobalContext);
-    const ulozSurovinuNaServerADoAppky = () => {
+    const SaveIngrToDb = () => {
         setShowButton(false);
         setMsgZeServeru("Ukládání");
         fetch("http://localhost:7000/save-material",{
@@ -37,16 +37,18 @@ const PridejSurovinu = ({zavri}) => {
         })
     }
     return (
-        <div className="">
-             <div className="" onClick={zavri}><p>zavrit</p></div>
-            <h3>Přidání ingredience</h3>
-            <input type="text" onInput={(e)=>setSurovina(e.target.value)} value={surovina} placeholder="Zadej ingredienci"/>
-           {showButton?<div onClick={ulozSurovinuNaServerADoAppky} className="btn btn-pridej-surovinu"> Ulož novou ingredienci</div>:<></>} 
+        <div className="tc mw6 bg-transparent br4 pa2 ma3 dt center bw2 shadow-2">
+             <div className="" onClick={zavri}><p className="f4 link dim ph3 pv2 mb2 dib white bg-red br-pill grow">zavrit</p></div>
+            <p className="f3 b">Přidání ingredience</p>
+            <div className="center pa3 setSirku">
+            <input className='f4 pa2 w-60 center' type="text" onInput={(e)=>setSurovina(e.target.value)} value={surovina} placeholder="Zadej ingredienci"/>
+           {showButton?<div onClick={SaveIngrToDb} className="button w-40 grow f3 link ph3 pv2 dib white bg-light-purple"> Uložit</div>:<></>} 
            <div>
+           </div>
                     <p className ='tc f6 link mid-gray dim'>{msgZeServeru}</p>
                 </div>
         </div>
     )
 }
 
-export default PridejSurovinu
+export default AddIngredience

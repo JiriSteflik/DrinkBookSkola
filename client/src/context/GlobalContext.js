@@ -4,16 +4,16 @@ import GlobalReducer from "./GlobalReducer";
 /**
  * 1. Vyplnit defaultní state
  */
- const hlavniState = {
+ const mainState = {
   vybraneSuroviny:[],
   zapniPanelSVyberemSurovin:false,
   vyhledaneRecepty:[],
   zvolenyRecept:0,
   };
 
-export const GlobalContext = createContext(hlavniState);
+export const GlobalContext = createContext(mainState);
 export const GlobalProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(GlobalReducer, hlavniState);
+  const [state, dispatch] = useReducer(GlobalReducer, mainState);
   /**
    * 
    * 3. Funkce která manipuluje s příslušným statem z bodu 1 
@@ -27,33 +27,33 @@ export const GlobalProvider = ({ children }) => {
  }*/
  const zapnutiVypnutiPaneluSVyberemSuroviny = (bool) => {
   dispatch({
-    type:"ZAPNI_VYPNI_PANEL_SUROVIN",
+    type:"ON_OFF_INGREDIENCE_PANEL",
     payload:bool
   })
 }
 const vyberSurovinu = (surovina) => {
   dispatch({
-    type:"VYBER_SUROVINU",
+    type:"CHOOSE_INGREDIENCE",
     payload:surovina
   })
 }
 
 const setVybraneSuroviny = (arr) => {
   dispatch({
-    type:"SET_VYBRANE_SUROVINY",
+    type:"SET_CHOOSE_INGREDIENCE",
     payload:arr
   })
 }
 
 const setVyhledaneRecepty = (arr) => {
   dispatch({
-    type:"SET_VYHLEDANE_RECEPTY",
+    type:"SET_FIND_DRINKS",
     payload:arr
   })
 }
 const setZvolenyRecept = (number) => {
   dispatch({
-    type:"SET_ZVOLENY_RECEPT",
+    type:"SET_CHOOSE_RECIPE",
     payload:number
   })
 }
@@ -66,14 +66,14 @@ const setZvolenyRecept = (number) => {
       value={{
         surovina:state.surovina,
         //zmenSurovinu,
-      //Seznam vybraných surovin do receptu
+      
         //Seznam vybraných surovin do receptu
         vybraneSuroviny:state.vybraneSuroviny,
-        vyberSurovinu,//Funkce na přidání do statu
-        setVybraneSuroviny,//Funkce na měnění statu
+        vyberSurovinu,
+        setVybraneSuroviny,
         
-        zapniPanelSVyberemSurovin:state.zapniPanelSVyberemSurovin,//Vypne zapne přidání surovin
-        zapnutiVypnutiPaneluSVyberemSuroviny,//Mění state
+        zapniPanelSVyberemSurovin:state.zapniPanelSVyberemSurovin,
+        zapnutiVypnutiPaneluSVyberemSuroviny,
         
         vyhledaneRecepty:state.vyhledaneRecepty,
         setVyhledaneRecepty,
