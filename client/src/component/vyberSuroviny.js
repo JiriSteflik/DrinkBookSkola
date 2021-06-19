@@ -49,7 +49,7 @@ return (
                       zapnutiVypnutiPaneluSVyberemSuroviny(false)  
                     }
                 }> </div>
-                <div classname="vyhledavaciPole"><input value={inputState} onInput={hledejSuroviny} type="text" placeholder={`Vyhledat suroviny (${seznamSurovin.length})`} /></div>
+                <div classname="vyhledavaciPole"><input value={inputState} onInput={hledejSuroviny} type="text" placeholder={`Vyhledat ingredience`} /></div>
                 <div classname="suroviny">{seznamSurovin.map((surovina,index) => {
                     return(
                         <div onClick={() => {

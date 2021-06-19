@@ -9,7 +9,7 @@ const Logo = () => {
         
       <Tilt className="Tilt br2 shadow-2 center" options={{ max : 55 }} style={{ height: 270, width: 270 }} >
         <div className="Tilt-inner pa3">
-          <h1 className='tc'>Beverage App</h1>
+          <h1 className='tc'>cocktail app</h1>
           <img className='image'  alt='logo' src={wine}/>
         </div>
       </Tilt>
