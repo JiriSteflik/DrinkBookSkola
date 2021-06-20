@@ -5,7 +5,7 @@ import {GlobalContext} from "../context/GlobalContext";
 import {useHistory} from "react-router-dom";
 const SearchDrink = () => {
     const route = useHistory();
-    const {setVyhledaneRecepty} = useContext(GlobalContext);
+    const {setFindDrinks} = useContext(GlobalContext);
     const [searchField, setSearchField] = useState("");
     
     const submit = () => {
@@ -22,13 +22,13 @@ const SearchDrink = () => {
             return data.json();
         })
         .then((data) => {
-            setVyhledaneRecepty(data);
+            setFindDrinks(data);
             setSearchField("");
             route.push("/search-engine-result-page");
         })
         .catch((err) => {
             if(err){
-                setVyhledaneRecepty({
+                setFindDrinks({
                     msg:"",
                     data:[]
                 })

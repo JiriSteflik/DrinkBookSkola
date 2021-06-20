@@ -112,70 +112,6 @@ text-align: center;
 
 
 
-.btn-add-item{
-  display: block;
-  padding: 15px 25px;
-  font-size: 18px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #661eec;
-  border: none;
-  border-radius: 15px;
-  
-}
-
-.btn-add-item:hover {background-color: #a923caa1}
-
-.btn-add-item:active {
-  background-color: #274db4;
-  box-shadow: 0 5px rgb(214, 65, 65);
-  transform: translateY(4px);
-}
-
-  .btn-save-item{
-    display: block;
-    padding: 15px 25px;
-    font-size: 18px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #661eec;
-    border: none;
-    border-radius: 15px;
-    
-  }
-  
-  .btn-save-item:hover {background-color: #a923caa1}
-  
-  .btn-save-item:active {
-    background-color: #3e538e;
-    box-shadow: 0 5px rgb(230, 76, 76);
-    transform: translateY(4px);
-}
-.btn-prefil-item{
-  background-color: #f44336;
-  margin-top: 20px;
-
-  padding: 5px 8px;
-  display: inline-block;
-  color: white;
-  border-radius: 4px;
-  font-weight: bold;
-  border: none;
-  font-size: 12px;
-  width: 150px;
-    text-align: center;
-    margin: 0 auto;
-    display: block;
-}
-
-
-
 
 .recipe-canvas h1{
   margin-bottom: 10vh;
@@ -259,80 +195,9 @@ text-align: center;
 }
 
 
-.card{
-  margin-top:20px;
-}
 
-.vyberSurovin{position: absolute;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: top;
-  align-items: center;
-  background: rgba(0,0,0,0.4);
-z-index:100;
-}    
-.vyberSurovin .plocha{
-  background: white;
-  margin-top: 20px;
-  padding: 20px;
-  border-radius: 4px;
-  position: relative;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin:20px;
-}
-.vyberSurovin .plocha .pridaniSuroviny{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  box-shadow: 3px 3px 3pc -25px;
-  padding: 13px;
-  border-radius: 12px;
-  position:relative
-}
-.vyberSurovin .plocha .pridaniSuroviny .zavrit{
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 10px;
-}
-.vyberSurovin .pridaniSuroviny input[type="text"]{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  text-align: center;
-  font-size: 16px;
-  background: #e6e6e6;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-}
-.vyberSurovin .plocha .btn-pridej-surovinu{
-  background: #009688;
-}
-.vyberSurovin .plocha .btn-prefil-item{
-  background:blue;
-}
-.vyberSurovin .plocha .btn{
-  justify-self: center;
-  align-self: center;
-}
-.vyberSurovin .plocha .zavrit{
-  text-align: right;
-    color: #bb0707;
-}
-.vyberSurovin .plocha .zavrit svg{
-  font-size:40px;
-  cursor:pointer;
-}
+
+
 .vyberSurovin .plocha .vyhledavaciPole input{
   width: 100%;
   margin: 10px 0px;

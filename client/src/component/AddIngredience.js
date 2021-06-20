@@ -2,10 +2,10 @@ import React,{useState, useContext} from 'react'
 import { GlobalContext } from '../context/GlobalContext';
 
 const AddIngredience = ({zavri}) => {
-    const [surovina, setSurovina] = useState("");
+    const [ingredience, setIngredience] = useState("");
     const [msgZeServeru, setMsgZeServeru] = useState("");
     const [showButton, setShowButton] = useState(true);
-    const {zapnutiVypnutiPaneluSVyberemSuroviny,vyberSurovinu} = useContext(GlobalContext);
+    const {onOffIngrediencePanel,chooseIngredience} = useContext(GlobalContext);
     const SaveIngrToDb = () => {
         setShowButton(false);
         setMsgZeServeru("Ukládání");
@@ -15,7 +15,7 @@ const AddIngredience = ({zavri}) => {
               'Accept': 'application/json, text/plain, */*',
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({name:surovina.toLowerCase()})
+            body: JSON.stringify({name:ingredience.toLowerCase()})
         }).then((response) => {
             return response.json();
         }).then(({msg}) => {
@@ -23,11 +23,11 @@ const AddIngredience = ({zavri}) => {
             setShowButton(true);
           if(msg === "Ingredience se uložila!"){
               //Zde dojde k uložení a celkovému propsání do seznamu všech surovin
-             vyberSurovinu({
-                name:surovina,
-                mnozstvi:0
+              chooseIngredience({
+                name:ingredience,
+                amount:0
              })
-             zapnutiVypnutiPaneluSVyberemSuroviny(false);
+             onOffIngrediencePanel(false);
           }
         }).catch((err) => {
             if(err){
@@ -41,7 +41,7 @@ const AddIngredience = ({zavri}) => {
              <div className="" onClick={zavri}><p className="f4 link dim ph3 pv2 mb2 dib white bg-red br-pill grow">zavrit</p></div>
             <p className="f3 b">Přidání ingredience</p>
             <div className="center pa3 setSirku">
-            <input className='f4 pa2 w-60 center' type="text" onInput={(e)=>setSurovina(e.target.value)} value={surovina} placeholder="Zadej ingredienci"/>
+            <input className='f4 pa2 w-60 center' type="text" onInput={(e)=>setIngredience(e.target.value)} value={ingredience} placeholder="Zadej ingredienci"/>
            {showButton?<div onClick={SaveIngrToDb} className="button w-40 grow f3 link ph3 pv2 dib white bg-light-purple"> Uložit</div>:<></>} 
            <div>
            </div>

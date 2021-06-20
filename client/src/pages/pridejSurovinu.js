@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 
 
 const AddIngredience = () => {
-    const [surovina, setSurovina] = useState("");
+    const [ingredience, setSurovina] = useState("");
     const [msgZeServeru, setMsgZeServeru] = useState("");
     
     
@@ -15,7 +15,7 @@ const AddIngredience = () => {
               'Accept': 'application/json, text/plain, */*',
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({name:surovina.toLowerCase()})
+            body: JSON.stringify({name:ingredience.toLowerCase()})
         }).then((response) => {
             return response.json();
         }).then(({msg}) => {
@@ -32,7 +32,7 @@ const AddIngredience = () => {
     return (
         <div>
             <div className="center pa4 setSirku">
-                <input className='f4 pa2 w-70 center' type="text" onInput={(e)=>setSurovina(e.target.value)} value={surovina} placeholder="Zadej ingredienci"/>
+                <input className='f4 pa2 w-70 center' type="text" onInput={(e)=>setSurovina(e.target.value)} value={ingredience} placeholder="Zadej ingredienci"/>
                 <div onClick={SaveIngToDb} className="button w-30 grow f4 link ph3 pv2 dib white bg-light-purple">Ulož </div> 
             </div>
                 <div>

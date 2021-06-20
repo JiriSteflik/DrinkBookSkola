@@ -1,76 +1,71 @@
 import React, {useState, useContext} from 'react';
 import { GlobalContext } from '../context/GlobalContext';
-import VyberSurovin from '../component/chooseIngredience';
+import ChooseIngredience from '../component/chooseIngredience';
 const AddRecipe = () => {
   const {
-    zapniPanelSVyberemSurovin,
-    zapnutiVypnutiPaneluSVyberemSuroviny,
-    vybraneSuroviny,
-    setVybraneSuroviny
+    onIngrediencePanel,
+    onOffIngrediencePanel,
+    choosenIngredience,
+    setChooseIngredience
 } = useContext(GlobalContext);
 
-  const [nazevReceptu, setNazevReceptu] = useState("");
-  const [popis, setPopis] = useState(""); 
-  const [dobaPripravy, setDobaPripravy] = useState("");
-  const [nahledovyObrazek, setNahledovyObrazek] = useState("");
-  
-  const [suroviny, setSuroviny] = useState([]); 
+  const [recipeName, setRecipeName] = useState("");
+  const [description, setDescription] = useState(""); 
+  const [prepareTime, setPrepareTime] = useState("");
+  const [seePicture, setSeePicture] = useState("");
+  const [ingredience, setIngredience] = useState([]); 
   const [msgZeServeru, setMsgZeServeru] = useState("");
   
     
-     const getVsechnySuroviny = async () => {
-        zapnutiVypnutiPaneluSVyberemSuroviny(true);
+     const getAllIngredience = async () => {
+      onOffIngrediencePanel(true);
      fetch("http://localhost:7000/get-materials").then((data) => {
          return data.json();
      }).then(({data}) => {
 
-         setSuroviny(data);
+       setIngredience(data);
      })
     }
 
   
-     const prepocitejGramaz = (array) => {
-      let sum = 0;
-       array.forEach((item) => sum += +item.mnozstvi);
-      
-  }
+
 
  
-   const menicMnozstvi = (e) => {
+   const changeAmmount = (e) => {
     
     if(e.target.value && e.target.value > 0){
     const index = e.target.getAttribute("index");
-    vybraneSuroviny[index].mnozstvi = parseInt(e.target.value);
-    setVybraneSuroviny(vybraneSuroviny);
-    prepocitejGramaz(vybraneSuroviny);
+    choosenIngredience[index].amount = parseInt(e.target.value);
+    setChooseIngredience(choosenIngredience);
+    
   }else{
       
       const index = e.target.getAttribute("index");
-    vybraneSuroviny[index].mnozstvi = parseInt(0);
-    setVybraneSuroviny(vybraneSuroviny);
-    prepocitejGramaz(vybraneSuroviny);
+    choosenIngredience[index].amount = parseInt(0);
+    setChooseIngredience(choosenIngredience);
+    
   }
 }
   
-   const smazZvolenouSurovinu = (e) => {
+   const deleteIngredience = (e) => {
     const index = e.target.getAttribute("index");
-    const ocisteneVybraneSuroviny = vybraneSuroviny.filter((item) =>item.name !== vybraneSuroviny[index].name);
-    setVybraneSuroviny(ocisteneVybraneSuroviny);
-    prepocitejGramaz(vybraneSuroviny);
+    const ocisteneVybraneSuroviny = choosenIngredience.filter((item) =>item.name !== choosenIngredience[index].name);
+    setChooseIngredience(ocisteneVybraneSuroviny);
+    
 }
   
 
-const ulozitReceptDoDatabaze = () => {
+const saveToDatabase = () => {
   
     const schemaObjektu = {
-      nazevReceptu:nazevReceptu,
-      popis:popis,
-      dobaPripravy:dobaPripravy,
-      nahledovyObrazek:nahledovyObrazek,
-      suroviny:vybraneSuroviny,
+      nazevReceptu:recipeName,
+      popis:description,
+      dobaPripravy:prepareTime,
+      nahledovyObrazek:seePicture,
+      suroviny:choosenIngredience,
       
       fullText:(() => {
-        let finalstring = `${nazevReceptu} ${popis} ${dobaPripravy} `;
+        let finalstring = `${recipeName} ${description} ${prepareTime} `;
         
         return finalstring;
     })()
@@ -109,7 +104,7 @@ fetch("http://localhost:7000/save-recipe",{
  
   return (
     <div>
-      
+      {onIngrediencePanel?<ChooseIngredience vybranesuroviny={choosenIngredience} suroviny={ingredience}/>:<></>}
       <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-40-l mw6 shadow-3 center">
        
        
@@ -125,7 +120,7 @@ fetch("http://localhost:7000/save-recipe",{
                     <input
                           className="b pa2 input-reset ba bg-transparent  hover-black w-100"
                           type="text"
-                          onInput={(e) => setNazevReceptu(e.target.value)} placeholder="Zvol nazev drinku" value={nazevReceptu}
+                          onInput={(e) => setRecipeName(e.target.value)} placeholder="Zvol nazev drinku" value={recipeName}
                     />
               </div>
 
@@ -134,7 +129,7 @@ fetch("http://localhost:7000/save-recipe",{
                        <input
                           className="b pa2 input-reset ba bg-transparent  hover-black w-100"
                           type="text"
-                          onInput={(e) => setPopis(e.target.value)} placeholder="Popiš přípravu receptu" value={popis}
+                          onInput={(e) => setDescription(e.target.value)} placeholder="Popiš přípravu receptu" value={description}
                        />
               </div>
 
@@ -143,7 +138,7 @@ fetch("http://localhost:7000/save-recipe",{
                        <input
                           className="b pa2 input-reset ba bg-transparent  hover-black w-100"
                           type="text"
-                          onInput={(e) => setDobaPripravy(e.target.value)} placeholder="Zapis dobu pripravy v minutach" value={dobaPripravy}
+                          onInput={(e) => setPrepareTime(e.target.value)} placeholder="Zapis dobu pripravy v minutach" value={prepareTime}
                        />
               </div>
 
@@ -152,21 +147,21 @@ fetch("http://localhost:7000/save-recipe",{
                        <input
                           className="b pa2 input-reset ba bg-transparent  hover-black w-100"
                           type="text"
-                          onInput={(e) => {setNahledovyObrazek(e.target.value);}} placeholder="Umístěte externí odkaz"  name="popis" value={nahledovyObrazek}
+                          onInput={(e) => {setSeePicture(e.target.value);}} placeholder="Umístěte externí odkaz"  name="popis" value={seePicture}
                        />
               </div>
 
-              <div className="card">
+              <div className="">
                 
-                        <div className="card">
+                        <div className="">
                            <br/>
                              <div className="vypisSuroviny">
-                             {vybraneSuroviny.map(({name},index) => {
+                             {choosenIngredience.map(({name},index) => {
                               return (
-                                  <div className="polozka" key={index}><strong>{name}(g):</strong>
-                                  <input key={index} onInput={menicMnozstvi} 
-                                   index={index}type="number" name={name} value={vybraneSuroviny[index].mnozstvi}/><div className="deleteThisItem" 
-                                   index={index} onClick={smazZvolenouSurovinu} >smazat</div></div>
+                                  <div className="br3 polozka " key={index}><strong>{name}(g):</strong>
+                                  <input key={index} onInput={changeAmmount} 
+                                   index={index}type="number" name={name} value={choosenIngredience[index].amount}/><div className="deleteThisItem" 
+                                   index={index} onClick={deleteIngredience} >smazat</div></div>
                               )
                               })}
                           </div>
@@ -175,12 +170,12 @@ fetch("http://localhost:7000/save-recipe",{
                         
               </div>
               <div onClick={() => {
-                               getVsechnySuroviny()
-                               }} className="btn btn-add-item">Přidat ingredienci</div>
+                               getAllIngredience()
+                               }} className="tc mw6 bg-blue br4 pa3 ma1 dt center bw2 shadow-2 w-70">Přidat ingredienci</div>
                     
               
             </fieldset>
-            <div className="btn btn-save-item" onClick={ulozitReceptDoDatabaze}> Uložit drink</div>
+            <div className="tc mw6 bg-blue br4 pa3 ma1 dt center bw2 shadow-2 w-70" onClick={saveToDatabase}> Uložit drink</div>
                     <p className="serverMsg">{msgZeServeru.msg}</p>
                     
             
@@ -189,7 +184,7 @@ fetch("http://localhost:7000/save-recipe",{
        
       </article>
       <div className="tc">
-    {zapniPanelSVyberemSurovin?<VyberSurovin vybranesuroviny={vybraneSuroviny} suroviny={suroviny}/>:<></>}
+    
     </div>
       </div>
       

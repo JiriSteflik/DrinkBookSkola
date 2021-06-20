@@ -4,15 +4,15 @@ import AddIngredience from "./AddIngredience";
 const ChooseIngredience = ({suroviny,vybranesuroviny}) => {
 const [otevritPridaniSuroviny, setOtevritPridaniSuroviny] = useState(false);    
 const [seznamSurovin, setSeznamSurovin] = useState([])
-const {zapnutiVypnutiPaneluSVyberemSuroviny,vyberSurovinu} = useContext(GlobalContext);
+const {onOffIngrediencePanel,chooseIngredience} = useContext(GlobalContext);
 const [inputState, setInputState] = useState("");
 useEffect(() => {
     const filtered = suroviny.filter( function( el ) {
 
-        const vybraneSuroviny = vybranesuroviny.map((surovina) => {
-            return surovina.name;
+        const choosenIngredience = vybranesuroviny.map((ingredience) => {
+            return ingredience.name;
         })
-        return vybraneSuroviny.indexOf( el.name ) < 0;
+        return choosenIngredience.indexOf( el.name ) < 0;
       } );
     setSeznamSurovin(filtered);
     return () => {
@@ -42,29 +42,29 @@ const zavriDialogPridaniSuroviny = () => {
 }
 
 return (
-        <div className="">
-            <div className="plocha">
-                <div className="zavrit" onClick={
+        <div className="tc mw6 bg-transparent br4 pa2 ma2 dt center bw2 shadow-5 ">
+            <div className="">
+                <div className="" onClick={
                     () => {
-                      zapnutiVypnutiPaneluSVyberemSuroviny(false)  
+                        onOffIngrediencePanel(false)  
                     }
-                }><p className="tc mw6 bg-red br4 pa2 ma3 dt center bw2 shadow-2 ">vypni</p></div>
-                <div className="vyhledavaciPole"><input value={inputState} onInput={hledejSuroviny} type="text" placeholder={`Vyhledat ingredience`} /></div>
-                <div className="suroviny">{seznamSurovin.map((surovina,index) => {
+                }><p className="tc mw6 bg-red br4 pa2 ma3 dt center bw2 shadow-2 pointer w-50 ">Zavřít</p></div>
+                <div className="tc pa2"><input value={inputState} onInput={hledejSuroviny} type="text" placeholder={`Vyhledat ingredience`} /></div>
+                <div className="">{seznamSurovin.map((ingredience,index) => {
                     return(
                         <div onClick={() => {
                             const object = {
                                 name:seznamSurovin[index].name,
-                                mnozstvi:0
+                                amount:0
                             }
-                            vyberSurovinu(object);
+                            chooseIngredience(object);
                             vymazZvoleneSurovinyZNabidky(object)
                         
-                        }} className="surovina" key={index}>{surovina.name}</div>
+                        }} className="tc dib  bg-washed-yellow br3 pa1 ma2 bw2 shadow-5 grow" key={index}>{ingredience.name}</div>
                     )
                 })}
                 </div>
-                <div className="buttnDva" onClick={()=>setOtevritPridaniSuroviny(!otevritPridaniSuroviny)}> Nenalezl jsi ingredienci?</div>
+                <div className="tc mw6 bg-blue br4 pa2 ma3 dt center bw2 shadow-2 w-50 " onClick={()=>setOtevritPridaniSuroviny(!otevritPridaniSuroviny)}> Nenalezl jsi ingredienci?</div>
                 {otevritPridaniSuroviny?<AddIngredience zavri={zavriDialogPridaniSuroviny}/>:<></>}
             </div>
         </div>

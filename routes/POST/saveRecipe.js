@@ -8,7 +8,7 @@ saveRecipe.post("/save-recipe", async (req,res) => {
     });
 
     try {
-      const data = await recipe.findOne({"nazevReceptu":nazevReceptu});
+      const data = await recipe.findOne({"recipeName":nazevReceptu});
 
       if (data) {
         return res.json({

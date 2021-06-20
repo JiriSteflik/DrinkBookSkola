@@ -5,10 +5,10 @@ import GlobalReducer from "./GlobalReducer";
  * 1. Vyplnit defaultní state
  */
  const mainState = {
-  vybraneSuroviny:[],
-  zapniPanelSVyberemSurovin:false,
-  vyhledaneRecepty:[],
-  zvolenyRecept:0,
+  choosenIngredience:[],
+  onIngrediencePanel:false,
+  foundRecipe:[],
+  choosenRecipe:0,
   };
 
 export const GlobalContext = createContext(mainState);
@@ -18,40 +18,40 @@ export const GlobalProvider = ({ children }) => {
    * 
    * 3. Funkce která manipuluje s příslušným statem z bodu 1 
    */
- /*const zmenSurovinu = (surovina) => {
+ /*const zmenSurovinu = (ingredience) => {
    dispatch({
      type:"ZMENA_SUROVINY",
-     payload:surovina
+     payload:ingredience
    })
    
  }*/
- const zapnutiVypnutiPaneluSVyberemSuroviny = (bool) => {
+ const onOffIngrediencePanel = (bool) => {
   dispatch({
     type:"ON_OFF_INGREDIENCE_PANEL",
     payload:bool
   })
 }
-const vyberSurovinu = (surovina) => {
+const chooseIngredience = (ingredience) => {
   dispatch({
     type:"CHOOSE_INGREDIENCE",
-    payload:surovina
+    payload:ingredience
   })
 }
 
-const setVybraneSuroviny = (arr) => {
+const setChooseIngredience = (arr) => {
   dispatch({
     type:"SET_CHOOSE_INGREDIENCE",
     payload:arr
   })
 }
 
-const setVyhledaneRecepty = (arr) => {
+const setFindDrinks = (arr) => {
   dispatch({
     type:"SET_FIND_DRINKS",
     payload:arr
   })
 }
-const setZvolenyRecept = (number) => {
+const setChooseRecipe = (number) => {
   dispatch({
     type:"SET_CHOOSE_RECIPE",
     payload:number
@@ -64,22 +64,22 @@ const setZvolenyRecept = (number) => {
      * 2. Propíšete tu hodnotu z toho statu
      */
       value={{
-        surovina:state.surovina,
+        ingredience:state.ingredience,
         //zmenSurovinu,
       
         //Seznam vybraných surovin do receptu
-        vybraneSuroviny:state.vybraneSuroviny,
-        vyberSurovinu,
-        setVybraneSuroviny,
+        choosenIngredience:state.choosenIngredience,
+        chooseIngredience,
+        setChooseIngredience,
         
-        zapniPanelSVyberemSurovin:state.zapniPanelSVyberemSurovin,
-        zapnutiVypnutiPaneluSVyberemSuroviny,
+        onIngrediencePanel:state.onIngrediencePanel,
+        onOffIngrediencePanel,
         
-        vyhledaneRecepty:state.vyhledaneRecepty,
-        setVyhledaneRecepty,
+        foundRecipe:state.foundRecipe,
+        setFindDrinks,
   
-        zvolenyRecept:state.zvolenyRecept,
-        setZvolenyRecept
+        choosenRecipe:state.choosenRecipe,
+        setChooseRecipe
       }}
     >
       {children}

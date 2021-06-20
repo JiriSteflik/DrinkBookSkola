@@ -5,7 +5,7 @@ import {GlobalContext} from "../context/GlobalContext";
 import {useHistory} from "react-router-dom"
 
 const SerpSearch = () => {
-    const {setVyhledaneRecepty, vyhledaneRecepty, setZvolenyRecept} = useContext(GlobalContext);
+    const {setFindDrinks, foundRecipe, setChooseRecipe} = useContext(GlobalContext);
     const [searchField, setSearchField] = useState("");
     const [errMessage, setErrMessage] = useState("");
     const route = useHistory();
@@ -23,13 +23,13 @@ const SerpSearch = () => {
             return data.json();
         })
         .then((data) => {
-            setVyhledaneRecepty(data);
+            setFindDrinks(data);
             console.log(data);
             setSearchField("");
         })
         .catch((err) => {
             if(err){
-                setVyhledaneRecepty({
+                setFindDrinks({
                     msg:"",
                     data:[]
                 })
@@ -63,11 +63,11 @@ const SerpSearch = () => {
         <p>{errMessage}</p>
         
         <div className="">
-            {vyhledaneRecepty.data && vyhledaneRecepty.data.length < 1?<p>Bohužel, žádné recepty s tímto dotazem nebyly nalezeny</p>:<></>}
-        {vyhledaneRecepty.data?vyhledaneRecepty.data.map((recept, index) => {
+            {foundRecipe.data && foundRecipe.data.length < 1?<p>Bohužel, žádné recepty s tímto dotazem nebyly nalezeny</p>:<></>}
+        {foundRecipe.data?foundRecipe.data.map((recept, index) => {
             return(
                 <div key={index} index={index} onClick={() => {
-                    setZvolenyRecept(index);
+                    setChooseRecipe(index);
                     route.push("/detail-receptu");
                 }}>
                     <div className="tc mw6 grow bg-washed-yellow br3 dt center pa4 ma4 bw2 shadow-5">
