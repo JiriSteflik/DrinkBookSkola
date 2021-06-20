@@ -113,9 +113,6 @@ text-align: center;
 
 
 
-.recipe-canvas h1{
-  margin-bottom: 10vh;
-}
 .add-recipe{
   width:100%;
   position:relative;
@@ -135,24 +132,17 @@ text-align: center;
   transition:all 0.5s ease;
   box-shadow: 3px 2px 2pc -12px !important;
 }
-.add-recipe .vypisSuroviny input[type="number"]{
-  text-align: center;
-  width: 50%;
-  margin: auto;
-  background: #ececec;
-  border: none;
-  font-size: 25px;
-  padding: 5px 0px;
-  box-shadow: -6px -8px 1pc -17px;
-}
+
+  
+
 .add-recipe .vypisSuroviny .polozka{
   position:relative;
   display: flex;
   flex-direction: column;
   padding: 2px;
-  background: #f0caca;
+  background: transparent;
   margin: 4px;
-  border-radius: 4px;
+  border-radius: 10px;
   box-shadow: 2px 19px 2pc -13px;
   color: #470000;
 }
@@ -198,108 +188,8 @@ text-align: center;
 
 
 
-.vyberSurovin .plocha .vyhledavaciPole input{
-  width: 100%;
-  margin: 10px 0px;
-  padding: 10px 0px;
-  border-radius: 3px;
-  border: none;
-  background: #e4e4e4;
-  text-align: center;
-}
-.vyberSurovin .plocha .suroviny{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  overflow: scroll;
-  max-height: 40vh;
-  height: auto;
-}
-.vyberSurovin .plocha .surovina{
-  padding: 6px 13px;
-  background: wheat;
-  margin: 3px;
-  border-radius: 3px;
-  color: #ba0706;
-  text-transform: lowercase;
-  cursor: pointer;
-  font-weight: bold;
-}
-.vyberSurovin .plocha .surovina:hover{
-  padding: 6px 13px;
-  background: #e8ca92;
-  margin: 3px;
-  border-radius: 3px;
-  color: black;
-  text-transform: lowercase;
-  cursor: pointer;
-  font-weight: bold;
 
-}
 
-.vypisReceptu{
-
-margin:auto;
-}
-.vypisReceptu .row{
-  display:inline;
-  
-  margin: 10px 0px;
-  background: white;
-  box-shadow: 3px 3px 4pc -31px;
-  transition: all 0.5s ease-in-out;
-  opacity:0.7;
-  border-top-left-radius:10px;
-  border-bottom-left-radius:10px;
-}
-.vypisReceptu .row:hover{
-  box-shadow: 3px 3px 2pc -11px;
-  cursor:pointer;
-  opacity:1;
-}
-.vypisReceptu .row img{
-  margin-right:10px;
-  border-top-left-radius:10px;
-  border-bottom-left-radius:10px;
-}
-.vypisReceptu .row .obsah{
-  padding:10px;
-}
-.detail-receptu{
-  width:900px;
-  display:block;
-  margin:auto;
-  max-width:100%;
-  padding:10px;
-}
-.detail-receptu img{
-  border-radius:12px;
-  border:2px solid grey;
-  max-width: 100%;
-}
-.detail-receptu .rest{
-  padding:0px 20px;
-}
-.detail-receptu h4,h3{
-  margin:10px 0px;
-  color:purple;
-  font-weight: bold;
-  font-size:20px;
-}
-.detail-receptu .flex-row{
-  display: flex;
- 
-  align-items:flex-start;
-}
-.detail-receptu .suroviny div{
-  display: inline-block;
-  font-size: 12px;
-  font-style: italic;
-  padding: 3px 4px;
-  border-radius: 4px;
-  margin: 3px 5px;
-  box-shadow: 15px 8px 2pc -9px;
-}
 .serverMsg{
   text-align: center;
   font-size: 12px;

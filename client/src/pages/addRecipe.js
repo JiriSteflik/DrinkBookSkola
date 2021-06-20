@@ -158,9 +158,9 @@ fetch("http://localhost:7000/save-recipe",{
                              <div className="vypisSuroviny">
                              {choosenIngredience.map(({name},index) => {
                               return (
-                                  <div className="br3 polozka " key={index}><strong>{name}(g):</strong>
-                                  <input key={index} onInput={changeAmmount} 
-                                   index={index}type="number" name={name} value={choosenIngredience[index].amount}/><div className="deleteThisItem" 
+                                  <div className="br3 flex flex direction column bg-light-blue ma1 polozka" key={index}><strong>{name}(g):</strong>
+                                  <input className="tc w-30 center bg-light-gray" key={index} onInput={changeAmmount} 
+                                   index={index}type="number" name={name} value={choosenIngredience[index].amount}/><div className="absolute pointer  white pa3 br3 flex justify-center bg-red " 
                                    index={index} onClick={deleteIngredience} >smazat</div></div>
                               )
                               })}
